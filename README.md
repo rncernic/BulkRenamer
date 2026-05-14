@@ -1,5 +1,7 @@
 # Bulk File Renamer
 
+**DISCLAIMER: Documentation, including this readme, generated using Antropic's Claude Opus 4.7**
+
 I created this small, focused desktop utility for renaming many files at once, built with **Free Pascal** and **Lazarus (LCL)**, to help me to deal with my hundreds astrophothos files. Just needed something to point at a folder, configure a pipeline of transformations, preview the result, then commit.
 
 No installation, no telemetry, no cloud — just a single executable that does one thing well and runs on Windows, Mac OS and Linux.
