@@ -1,0 +1,635 @@
+object frmMain: TfrmMain
+  Left = 200
+  Height = 760
+  Top = 80
+  Width = 900
+  Caption = 'Bulk Renamer'
+  ClientHeight = 760
+  ClientWidth = 900
+  Constraints.MinHeight = 760
+  Constraints.MinWidth = 900
+  Position = poScreenCenter
+  LCLVersion = '4.6.0.0'
+  OnCreate = FormCreate
+  object pnlFolder: TPanel
+    Left = 0
+    Height = 104
+    Top = 0
+    Width = 900
+    Align = alTop
+    Alignment = taLeftJustify
+    BevelOuter = bvNone
+    ClientHeight = 104
+    ClientWidth = 900
+    TabOrder = 0
+    object grpFolder: TGroupBox
+      Left = 8
+      Height = 88
+      Top = 8
+      Width = 884
+      Caption = 'Folder'
+      ClientHeight = 68
+      ClientWidth = 880
+      TabOrder = 0
+      object edtFolder: TEdit
+        Left = 8
+        Height = 23
+        Top = 8
+        Width = 536
+        TabOrder = 0
+      end
+      object btnBrowse: TButton
+        Left = 552
+        Height = 23
+        Top = 8
+        Width = 80
+        Caption = 'Browse...'
+        TabOrder = 1
+        OnClick = btnBrowseClick
+      end
+      object btnFilterFiles: TButton
+        Left = 816
+        Height = 22
+        Top = 8
+        Width = 48
+        Caption = 'Filter'
+        TabOrder = 2
+        OnClick = btnFilterFilesClick
+      end
+      object edtFilter: TEdit
+        Left = 664
+        Height = 23
+        Top = 8
+        Width = 144
+        TabOrder = 3
+        Text = '*'
+      end
+      object chkRecursive: TCheckBox
+        Left = 10
+        Height = 19
+        Top = 40
+        Width = 74
+        Caption = 'Subfolders'
+        TabOrder = 4
+      end
+      object chkOnlyFiles: TCheckBox
+        Left = 112
+        Height = 19
+        Top = 40
+        Width = 67
+        Caption = 'Files only'
+        Checked = True
+        State = cbChecked
+        TabOrder = 5
+      end
+    end
+  end
+  object pnlTrim: TPanel
+    Left = 0
+    Height = 98
+    Top = 104
+    Width = 900
+    Align = alTop
+    Alignment = taLeftJustify
+    BevelOuter = bvNone
+    ClientHeight = 98
+    ClientWidth = 900
+    TabOrder = 1
+    object grpTrim: TGroupBox
+      Left = 8
+      Height = 88
+      Top = 0
+      Width = 884
+      Caption = 'Trim (remove from start / end)'
+      ClientHeight = 68
+      ClientWidth = 880
+      TabOrder = 0
+      object chkTrimStartChars: TCheckBox
+        Left = 8
+        Height = 19
+        Top = 8
+        Width = 171
+        Caption = 'Remove N chars from START'
+        TabOrder = 0
+      end
+      object lblTrimStartCount: TLabel
+        Left = 240
+        Height = 15
+        Top = 10
+        Width = 12
+        Caption = 'N:'
+      end
+      object spnTrimStartCount: TSpinEdit
+        Left = 260
+        Height = 23
+        Top = 6
+        Width = 60
+        MaxValue = 999
+        TabOrder = 1
+      end
+      object chkTrimEndChars: TCheckBox
+        Left = 460
+        Height = 19
+        Top = 8
+        Width = 159
+        Caption = 'Remove N chars from END'
+        TabOrder = 2
+      end
+      object lblTrimEndCount: TLabel
+        Left = 692
+        Height = 15
+        Top = 10
+        Width = 12
+        Caption = 'N:'
+      end
+      object spnTrimEndCount: TSpinEdit
+        Left = 712
+        Height = 23
+        Top = 6
+        Width = 60
+        MaxValue = 999
+        TabOrder = 3
+      end
+      object chkTrimStartDelim: TCheckBox
+        Left = 8
+        Height = 19
+        Top = 40
+        Width = 208
+        Caption = 'Remove from START until delimiter:'
+        TabOrder = 4
+      end
+      object edtTrimStartDelim: TEdit
+        Left = 260
+        Height = 23
+        Top = 36
+        Width = 80
+        TabOrder = 5
+      end
+      object chkTrimStartLast: TCheckBox
+        Left = 348
+        Height = 19
+        Top = 40
+        Width = 94
+        Caption = 'use last match'
+        TabOrder = 6
+      end
+      object chkTrimEndDelim: TCheckBox
+        Left = 460
+        Height = 19
+        Top = 40
+        Width = 211
+        Caption = 'Remove from END back to delimiter:'
+        TabOrder = 7
+      end
+      object edtTrimEndDelim: TEdit
+        Left = 712
+        Height = 23
+        Top = 36
+        Width = 80
+        TabOrder = 8
+      end
+      object chkTrimEndLast: TCheckBox
+        Left = 800
+        Height = 19
+        Top = 40
+        Width = 57
+        Caption = 'use last'
+        TabOrder = 9
+      end
+    end
+  end
+  object pnlFindNReplace: TPanel
+    Left = 0
+    Height = 110
+    Top = 202
+    Width = 900
+    Align = alTop
+    Alignment = taLeftJustify
+    BevelOuter = bvNone
+    ClientHeight = 110
+    ClientWidth = 900
+    TabOrder = 2
+    object grpFind: TGroupBox
+      Left = 8
+      Height = 100
+      Top = 0
+      Width = 440
+      Caption = 'Find && Replace'
+      ClientHeight = 80
+      ClientWidth = 436
+      TabOrder = 0
+      object lblFind: TLabel
+        Left = 8
+        Height = 15
+        Top = 4
+        Width = 26
+        Caption = 'Find:'
+      end
+      object edtFind: TEdit
+        Left = 8
+        Height = 23
+        Top = 22
+        Width = 200
+        TabOrder = 0
+      end
+      object lblReplace: TLabel
+        Left = 220
+        Height = 15
+        Top = 4
+        Width = 44
+        Caption = 'Replace:'
+      end
+      object edtReplace: TEdit
+        Left = 220
+        Height = 23
+        Top = 22
+        Width = 200
+        TabOrder = 1
+      end
+      object chkCaseSensitive: TCheckBox
+        Left = 8
+        Height = 19
+        Top = 54
+        Width = 91
+        Caption = 'Case sensitive'
+        TabOrder = 2
+      end
+      object chkIncludeExt: TCheckBox
+        Left = 130
+        Height = 19
+        Top = 54
+        Width = 137
+        Caption = 'Apply to extension too'
+        TabOrder = 3
+      end
+    end
+    object grpBetween: TGroupBox
+      Left = 456
+      Height = 100
+      Top = 0
+      Width = 436
+      Caption = 'Between delimiters'
+      ClientHeight = 80
+      ClientWidth = 432
+      TabOrder = 1
+      object chkBetweenEnable: TCheckBox
+        Left = 8
+        Height = 19
+        Top = 4
+        Width = 53
+        Caption = 'Enable'
+        TabOrder = 0
+      end
+      object lblBetweenOpen: TLabel
+        Left = 110
+        Height = 15
+        Top = 4
+        Width = 32
+        Caption = 'Open:'
+      end
+      object edtBetweenOpen: TEdit
+        Left = 150
+        Height = 23
+        Top = 0
+        Width = 60
+        TabOrder = 1
+      end
+      object lblBetweenClose: TLabel
+        Left = 220
+        Height = 15
+        Top = 4
+        Width = 32
+        Caption = 'Close:'
+      end
+      object edtBetweenClose: TEdit
+        Left = 260
+        Height = 23
+        Top = 0
+        Width = 60
+        TabOrder = 2
+      end
+      object lblBetweenReplace: TLabel
+        Left = 8
+        Height = 15
+        Top = 32
+        Width = 70
+        Caption = 'Replace with:'
+      end
+      object edtBetweenReplace: TEdit
+        Left = 110
+        Height = 23
+        Top = 28
+        Width = 200
+        TabOrder = 3
+      end
+      object chkBetweenKeepDelims: TCheckBox
+        Left = 8
+        Height = 19
+        Top = 56
+        Width = 99
+        Caption = 'Keep delimiters'
+        TabOrder = 4
+      end
+      object chkBetweenFirstOnly: TCheckBox
+        Left = 220
+        Height = 19
+        Top = 56
+        Width = 103
+        Caption = 'First match only'
+        TabOrder = 5
+      end
+    end
+  end
+  object pnlPrefixSuffix: TPanel
+    Left = 0
+    Height = 64
+    Top = 312
+    Width = 900
+    Align = alTop
+    Alignment = taLeftJustify
+    BevelOuter = bvNone
+    ClientHeight = 64
+    ClientWidth = 900
+    TabOrder = 3
+    object grpPrefixSuffix: TGroupBox
+      Left = 8
+      Height = 56
+      Top = 0
+      Width = 884
+      Caption = 'Add Prefix / Suffix'
+      ClientHeight = 36
+      ClientWidth = 880
+      TabOrder = 0
+      object lblPrefix: TLabel
+        Left = 8
+        Height = 15
+        Top = 4
+        Width = 32
+        Caption = 'Prefix:'
+      end
+      object edtPrefix: TEdit
+        Left = 60
+        Height = 23
+        Top = 0
+        Width = 360
+        TabOrder = 0
+      end
+      object lblSuffix: TLabel
+        Left = 444
+        Height = 15
+        Top = 4
+        Width = 32
+        Caption = 'Suffix:'
+      end
+      object edtSuffix: TEdit
+        Left = 496
+        Height = 23
+        Top = 0
+        Width = 360
+        TabOrder = 1
+      end
+    end
+  end
+  object pnlNumbering: TPanel
+    Left = 0
+    Height = 82
+    Top = 376
+    Width = 900
+    Align = alTop
+    Alignment = taLeftJustify
+    BevelOuter = bvNone
+    ClientHeight = 82
+    ClientWidth = 900
+    TabOrder = 4
+    object grpNumbering: TGroupBox
+      Left = 8
+      Height = 72
+      Top = 0
+      Width = 884
+      Caption = 'Numbering'
+      ClientHeight = 52
+      ClientWidth = 880
+      TabOrder = 0
+      object chkUseNumber: TCheckBox
+        Left = 8
+        Height = 19
+        Top = 16
+        Width = 102
+        Caption = 'Add numbering'
+        TabOrder = 0
+      end
+      object lblStart: TLabel
+        Left = 128
+        Height = 15
+        Top = 0
+        Width = 27
+        Caption = 'Start:'
+      end
+      object spnStart: TSpinEdit
+        Left = 128
+        Height = 23
+        Top = 16
+        Width = 80
+        MaxValue = 999999
+        TabOrder = 1
+        Value = 1
+      end
+      object lblPadding: TLabel
+        Left = 220
+        Height = 15
+        Top = 0
+        Width = 87
+        Caption = 'Padding (digits):'
+      end
+      object spnPadding: TSpinEdit
+        Left = 220
+        Height = 23
+        Top = 16
+        Width = 88
+        MaxValue = 12
+        TabOrder = 2
+        Value = 3
+      end
+      object lblPosition: TLabel
+        Left = 328
+        Height = 15
+        Top = 0
+        Width = 46
+        Caption = 'Position:'
+      end
+      object cmbNumPosition: TComboBox
+        Left = 328
+        Height = 23
+        Top = 16
+        Width = 200
+        ItemHeight = 15
+        Style = csDropDownList
+        TabOrder = 3
+      end
+      object lblSep: TLabel
+        Left = 548
+        Height = 15
+        Top = 0
+        Width = 53
+        Caption = 'Separator:'
+      end
+      object edtNumberSep: TEdit
+        Left = 548
+        Height = 23
+        Top = 16
+        Width = 53
+        TabOrder = 4
+        Text = '_'
+      end
+    end
+  end
+  object pnlApply: TPanel
+    Left = 0
+    Height = 46
+    Top = 458
+    Width = 900
+    Align = alTop
+    Alignment = taLeftJustify
+    BevelOuter = bvNone
+    ClientHeight = 46
+    ClientWidth = 900
+    TabOrder = 5
+    object btnPreview: TButton
+      Left = 8
+      Height = 30
+      Top = 8
+      Width = 140
+      Caption = 'Update preview'
+      TabOrder = 0
+      OnClick = btnPreviewClick
+    end
+    object btnRename: TButton
+      Left = 156
+      Height = 30
+      Top = 8
+      Width = 140
+      Caption = 'Rename!'
+      TabOrder = 1
+      OnClick = btnRenameClick
+    end
+    object lblStatus: TLabel
+      Left = 312
+      Height = 15
+      Top = 16
+      Width = 35
+      Caption = 'Ready.'
+    end
+    object spbAbout: TSpeedButton
+      Left = 840
+      Height = 30
+      Top = 8
+      Width = 31
+      Glyph.Data = {
+        36090000424D3609000000000000360000002800000018000000180000000100
+        2000000000000009000064000000640000000000000000000000FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FF80
+        0002D6AD0019D2AA0033D2AA0033D6AD0019FF800002FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00D5AB0049D5AB00A3D4AA
+        00EED4AA00FFD4AA00FFD4AA00FFD4AA00FFD4AA00EDD5AA00A2D4A90047FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00D3AC002ED5AA00C0D4AA00FFD5AA00EAD5AA
+        009CD5AB0067D4A9004DD4A9004DD5AB0067D5AB009DD5AA00EAD4AA00FFD4AA
+        00BFD2AA002DFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00D3A90056D4AA00F5D4AA00E6D5AA0066BFBF0004FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00BFBF0004D3A90068D4AA
+        00E7D4AA00F4D5AA0054FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00D3A90056D4AA00FED3AA00C1CEAA0015FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00D1AE
+        0016D4AA00C3D4AA00FED4A90053FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00D5AA0030D4AA00F5D3AA00C1D5AA0006FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00D1AD001CD3AA00BBD3AA00BBD5AA002AFFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00D5AA0006D4AA00C2D4AA00F4D2AA002DFFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00D4AA00C2D4AA00E5D9A60014FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00D7A80026D4AA00FFD4AA00FFD3AB003AFFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00D1AE0016D4AA00E7D4AA00BFFFFFFF00FFFFFF00FFFFFF00D5AB
+        0049D4AA00FFD4A90065FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00D3A60017D4AA0099D4AA0099D3A80023FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00D3A90068D4AA00FFD4A90047FFFFFF00FFFFFF00D3A9
+        00A4D4AA00E9BFBF0004FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00BFBF0004D5AA00EAD5AA00A2FFFFFF00AAAA0003D4AA
+        00EED4A9009BFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00D3A60017D4AA0099D4AA0099CC990005FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00D3A9009ED4AA00EDFF800002D8A7001AD4AA
+        00FFD4A90065FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00D3A7001DD4AA00FFD4AA00FFD6AC0025FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00D5AB0067D4AA00FFD6AD0019D2AA0033D4AA
+        00FFD3AB004CFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFF0001D5AA00DED4AA00FFD3AA00C7D8B1000DFFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00D5AA004ED4AA00FFD6A80032D3AC0034D4AA
+        00FFD3AA004BFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00D5AB003DD4AA00F4D4AA00FFD4AA00CBCEAA0015FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00D4A9004DD4AA00FFD2AA0033D0AA001BD4AA
+        00FFD4AB0064FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00D5AC0037D5AA00EAD4AA00FFD4AA00C9CC990005FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00D5AB0067D4AA00FFD6AD0019AAAA0003D4AA
+        00EFD4A9009BFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00AAAA0003D9A6
+        0014FFFFFF00FFFFFF00FFFFFF00D5AA002AD4AA00FBD4AA00FFD5AB004FFFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00D5AB009DD4AA00EEAAAA0003FFFFFF00D4AA
+        00A5D4AA00E8AAAA0003FFFFFF00FFFFFF00FFFFFF00D4A9004DD4AA00FAD4AA
+        00EECCB3000AFFFFFF00FFFFFF00FFFF0001D4AA00EED4AA00FFD5AB0067FFFF
+        FF00FFFFFF00FFFFFF00BFBF0004D4AA00E9D5AB00A3FFFFFF00FFFFFF00D3AA
+        004BD4AA00FFD3AA0063FFFFFF00FFFFFF00FFFFFF00CEAA0015D4AA00F1D4AA
+        00FFD4AA00B1D3A80029D6AD001FD4AA0093D4AA00FFD5AA00F6D2AD0022FFFF
+        FF00FFFFFF00FFFFFF00D5AA0066D4AA00FFD5AA0048FFFFFF00FFFFFF00FFFF
+        FF00D4AA00C4D5AA00E4D7AE0013FFFFFF00FFFFFF00FFFFFF00D5AB004FD4AA
+        00F9D4AA00FFD4AA00FFD4AA00FFD4AA00FFD4AA00FBD5AB005BFFFFFF00FFFF
+        FF00FFFFFF00CEAA0015D4AA00E6D3AA00C1FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00D5AC0031D5AA00F6D4AA00BFD5AA0006FFFFFF00FFFFFF00FFFFFF00D3A8
+        0029D5AB0085D4AA00ADD4AA00ACD3A90086D2AA002DFFFFFF00FFFFFF00FFFF
+        FF00D5AA0006D4AA00C2D4AA00F5D4A8002FFFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00D4AB0058D4AA00FED4AA00BFD7AE0013FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00D9A6
+        0014D3AA00C1D4AA00FED3A90056FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00D3AA0057D5AA00F6D5AA00E4D3AA0063AAAA0003FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00BFBF0004D4A90065D4AA
+        00E5D4AA00F5D3A90056FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00D5AC0031D4AA00C4D4AA00FFD4AA00E8D4AB
+        009AD4AB0064D3AB004CD3AB004CD4A90065D4A9009BD4AA00E9D4AA00FFD4AA
+        00C2D5AA0030FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00D3AA004BD4AA00A5D4AA
+        00EFD4AA00FFD4AA00FFD4AA00FFD4AA00FFD4AA00EED3A900A4D6A9004AFFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00BFBF
+        0004D8A7001AD2AA0033D2AA0033D8A7001AAAAA0003FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
+      }
+      OnClick = spbAboutClick
+    end
+  end
+  object pnlFileList: TPanel
+    Left = 0
+    Height = 256
+    Top = 504
+    Width = 900
+    Align = alClient
+    Alignment = taLeftJustify
+    BevelOuter = bvNone
+    ClientHeight = 256
+    ClientWidth = 900
+    TabOrder = 6
+    object lvFiles: TListView
+      Left = 8
+      Height = 240
+      Top = 8
+      Width = 884
+      Align = alClient
+      BorderSpacing.Around = 8
+      Columns = <>
+      ReadOnly = True
+      RowSelect = True
+      TabOrder = 0
+      ViewStyle = vsReport
+    end
+  end
+  object SelectDirectoryDialog: TSelectDirectoryDialog
+    Left = 816
+    Top = 232
+  end
+end
