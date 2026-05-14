@@ -24,9 +24,8 @@ No installation, no telemetry, no cloud — just a single executable that does o
 
 ## Screenshots
 
-```
-docs/screenshot-main.png
-```
+
+![Alt Text](docs/screenshot-main.png)
 
 ## Usage
 
