@@ -75,4 +75,4 @@ No installation, no telemetry, no cloud — just a single executable that does o
 
 ## License
 
-This project is released under the MIT License.
+This project is released under the MIT License. See [`LICENSE`](LICENSE) for details.
